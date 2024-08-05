@@ -1,6 +1,5 @@
 package com.uraniumape.questions;
 
-import com.uraniumape.questions.validation.Sanitizer;
 import com.uraniumape.questions.validation.Validator;
 
 public class Question {
