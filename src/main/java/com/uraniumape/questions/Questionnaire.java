@@ -1,6 +1,8 @@
 package com.uraniumape.questions;
 
 import com.uraniumape.questions.validation.Validator;
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +14,12 @@ public class Questionnaire {
     private int currentQuestion;
     private final List<Question> questions;
     private QuestionnaireAction completeAction;
+    private final JavaPlugin plugin;
 
-    public Questionnaire(UUID playerUUID) {
+    public Questionnaire(UUID playerUUID, JavaPlugin plugin) {
         this.questions = new ArrayList<>();
         this.playerUUID = playerUUID;
+        this.plugin = plugin;
     }
 
     public void ask(String question) {
@@ -57,6 +61,6 @@ public class Questionnaire {
     }
 
     public void complete() {
-        this.completeAction.run(this.getResults());
+        Bukkit.getScheduler().runTask(plugin, () -> this.completeAction.run(this.getResults()));
     }
 }
