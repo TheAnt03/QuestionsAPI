@@ -6,4 +6,5 @@
 
 
 <h2>How do I use this?</h2>
-<article>Right now, the only way to use this is by using the release jar and adding it as a library, but I will add Maven support soon.</article>
+<p>Right now, the only way to use this is by using the release jar and adding it as a library, but I will add Maven support soon.</p>
+<p>To learn more how to use this, read the <a href="https://github.com/TheAnt03/QuestionsAPI/wiki">wiki</a></p>
