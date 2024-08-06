@@ -12,13 +12,37 @@ public class QuestionnaireBuilder {
         this.questionnaire = new Questionnaire(playerUUID, plugin);
     }
 
+    /**
+     * @deprecated
+     * This usage is no longer the correct way to add a question
+     * <p> Use {@link QuestionnaireBuilder#ask(String key, String question)} instead.
+     *
+     */
+    @Deprecated
     public QuestionnaireBuilder ask(String question) {
         questionnaire.ask(question);
         return this;
     }
 
+    /**
+     * @deprecated
+     * This usage is no longer the correct way to add a question
+     * <p> Use {@link QuestionnaireBuilder#ask(String key, String question, Validator validator)} instead.
+     *
+     */
+    @Deprecated
     public QuestionnaireBuilder ask(String question, Validator validator) {
         questionnaire.ask(question, validator);
+        return this;
+    }
+
+    public QuestionnaireBuilder ask(String key, String question) {
+        questionnaire.ask(key, question);
+        return this;
+    }
+
+    public QuestionnaireBuilder ask(String key, String question, Validator validator) {
+        questionnaire.ask(key, question, validator);
         return this;
     }
 
