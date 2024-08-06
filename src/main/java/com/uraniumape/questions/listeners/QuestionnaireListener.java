@@ -16,6 +16,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Set;
 import java.util.UUID;
 
 public class QuestionnaireListener implements Listener {
@@ -27,15 +28,15 @@ public class QuestionnaireListener implements Listener {
         this.manager = manager;
     }
 
-    private void removeActiveQuestionnaires(AsyncPlayerChatEvent event) {
+    private void removeActivePlayersFromChat(Set<Player> players) {
         for(UUID player : manager.getActivePlayers()) {
-            event.getRecipients().remove(Bukkit.getPlayer(player));
+            players.remove(Bukkit.getPlayer(player));
         }
     }
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event) {
-        this.removeActiveQuestionnaires(event);
+        this.removeActivePlayersFromChat(event.getRecipients());
         manager.onChat(event);
     }
 }
