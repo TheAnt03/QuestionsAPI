@@ -6,5 +6,24 @@
 
 
 <h2>How do I use this?</h2>
-<p>Right now, the only way to use this is by using the release jar and adding it as a library, but I will add Maven support soon.</p>
+<p>You can use the jar in the releases tab, but it is reccomended to use Maven.</p>
+<p>You can do this by adding the following repository and dependency to your project</p>
+
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+```
+
+```xml
+<dependency>
+    <groupId>com.github.TheAnt03</groupId>
+    <artifactId>QuestionsAPI</artifactId>
+    <version>v1.3.3b</version>
+</dependency>
+```
+
 <p>To learn more how to use this, read the <a href="https://github.com/TheAnt03/QuestionsAPI/wiki">wiki</a></p>
