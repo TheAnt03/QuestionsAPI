@@ -22,7 +22,7 @@
 <dependency>
     <groupId>com.github.TheAnt03</groupId>
     <artifactId>QuestionsAPI</artifactId>
-    <version>v1.3.3b</version>
+    <version>v1.4</version>
 </dependency>
 ```
 
