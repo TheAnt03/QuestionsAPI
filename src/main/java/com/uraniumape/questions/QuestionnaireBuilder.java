@@ -46,6 +46,17 @@ public class QuestionnaireBuilder {
         return this;
     }
 
+    public QuestionnaireBuilder setTimeout(int timeout) {
+        questionnaire.setTimeout(timeout);
+        return this;
+    }
+
+    public QuestionnaireBuilder setTimeout(int timeout, String timeoutMessage) {
+        questionnaire.setTimeout(timeout, timeoutMessage);
+        return this;
+    }
+
+
     public QuestionnaireBuilder onComplete(QuestionnaireAction action) {
         questionnaire.setOnComplete(action);
         return this;

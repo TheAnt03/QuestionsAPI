@@ -7,17 +7,22 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.*;
 
 public class Questionnaire {
-
+    private static String DEFAULT_TIMEOUT_MESSAGE = "You've taken too long to respond";
     private final UUID playerUUID;
     private int currentQuestion;
     private final LinkedHashMap<String, Question> questions;
     private QuestionnaireAction completeAction;
     private final JavaPlugin plugin;
+    private int timeout;
+    private int currentTimeout;
+    private String timeoutMessage;
 
     public Questionnaire(UUID playerUUID, JavaPlugin plugin) {
         this.questions = new LinkedHashMap<>();
         this.playerUUID = playerUUID;
         this.plugin = plugin;
+        this.timeout = -1;
+        this.timeoutMessage = DEFAULT_TIMEOUT_MESSAGE;
     }
 
     /**
@@ -50,6 +55,10 @@ public class Questionnaire {
         questions.put(key, new Question(question, validator));
     }
 
+    public void answer(String answer) {
+        getQuestionByIndex(currentQuestion).answer(answer);
+    }
+
     public void setOnComplete(QuestionnaireAction completeAction) {
         this.completeAction = completeAction;
     }
@@ -66,16 +75,46 @@ public class Questionnaire {
         return this.playerUUID;
     }
 
-    public void answer(String answer) {
-        getQuestionByIndex(currentQuestion).answer(answer);
+    public void resetTimeout() {
+        this.currentTimeout = timeout;
     }
 
-    public void next() {
-        currentQuestion++;
+    public void takeTimeoutSecond() {
+        currentTimeout = currentTimeout - 1;
+    }
+
+    public void setCurrentTimeout(int timeout) {
+        currentTimeout = timeout;
+    }
+
+    public int getCurrentTimeout() {
+        return this.currentTimeout;
+    }
+
+    public void setTimeout(int timeout) {
+        this.timeout = timeout;
+        this.currentTimeout = timeout;
+    }
+
+    public void setTimeout(int timeout, String timeoutMessage) {
+        this.timeoutMessage = timeoutMessage;
+        setTimeout(timeout);
+    }
+
+    public int getTimeout() {
+        return this.timeout;
+    }
+
+    public String getTimeoutMessage() {
+        return this.timeoutMessage;
     }
 
     public Results getResults() {
         return new Results(questions);
+    }
+
+    public void next() {
+        currentQuestion++;
     }
 
     public void complete() {
