@@ -12,6 +12,9 @@ target/
 *.iml
 *.ipr
 
+### Secret Stuffs ###
+settings.xml
+
 ### Eclipse ###
 .apt_generated
 .classpath
