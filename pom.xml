@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.uraniumape</groupId>
-    <artifactId>questionsapi</artifactId>
+    <artifactId>QuestionsAPI</artifactId>
     <version>1.3</version>
 
     <properties>
@@ -14,14 +14,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/TheAnt03/QuestionsAPI</url>
-        </repository>
-    </distributionManagement>
-
     <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
@@ -29,6 +21,7 @@
             <version>1.20-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+
     </dependencies>
 
     <build>
