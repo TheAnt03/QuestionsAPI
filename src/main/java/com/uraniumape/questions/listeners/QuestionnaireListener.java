@@ -1,11 +1,5 @@
 package com.uraniumape.questions.listeners;
 
-import com.comphenix.protocol.PacketType;
-import com.comphenix.protocol.ProtocolLibrary;
-import com.comphenix.protocol.events.ListenerPriority;
-import com.comphenix.protocol.events.PacketAdapter;
-import com.comphenix.protocol.events.PacketContainer;
-import com.comphenix.protocol.events.PacketEvent;
 import com.uraniumape.questions.Questionnaire;
 import com.uraniumape.questions.QuestionsManager;
 import org.bukkit.Bukkit;
