@@ -6,7 +6,7 @@
 
     <groupId>com.uraniumape</groupId>
     <artifactId>QuestionsAPI</artifactId>
-    <version>1.4</version>
+    <version>1.4.1</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

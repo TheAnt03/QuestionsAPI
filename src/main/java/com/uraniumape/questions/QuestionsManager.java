@@ -66,7 +66,7 @@ public class QuestionsManager {
 
     public void endQuestionnaire(Questionnaire questionnaire) {
         activeQuestionnaires.remove(questionnaire.getPlayerUUID());
-        questionnaire.setCurrentTimeout(0);
+        questionnaire.finish();
     }
 
     public Set<UUID> getActivePlayers() {
@@ -89,6 +89,11 @@ public class QuestionsManager {
             public void run() {
                 if(questionnaire.getCurrentTimeout() == 0) {
                     Bukkit.getPlayer(questionnaire.getPlayerUUID()).sendMessage(questionnaire.getTimeoutMessage());
+                    endQuestionnaire(questionnaire);
+                    cancel();
+                }
+
+                if(questionnaire.isFinished()) {
                     endQuestionnaire(questionnaire);
                     cancel();
                 }

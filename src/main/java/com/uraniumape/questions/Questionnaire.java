@@ -16,6 +16,7 @@ public class Questionnaire {
     private int timeout;
     private int currentTimeout;
     private String timeoutMessage;
+    private boolean finished;
 
     public Questionnaire(UUID playerUUID, JavaPlugin plugin) {
         this.questions = new LinkedHashMap<>();
@@ -23,6 +24,7 @@ public class Questionnaire {
         this.plugin = plugin;
         this.timeout = -1;
         this.timeoutMessage = DEFAULT_TIMEOUT_MESSAGE;
+        this.finished = false;
     }
 
     /**
@@ -118,7 +120,16 @@ public class Questionnaire {
     }
 
     public void complete() {
+        this.finished = true;
         Bukkit.getScheduler().runTask(plugin, () -> this.completeAction.run(this.getResults()));
+    }
+
+    public void finish() {
+        this.finished = true;
+    }
+
+    public boolean isFinished() {
+        return finished;
     }
 
     private Question getQuestionByIndex(int index) {
